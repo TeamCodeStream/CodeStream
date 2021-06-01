@@ -28,15 +28,17 @@ export const ForgotPassword = (connect(undefined) as any)((props: Props) => {
 				<form className="standard-form">
 					<fieldset className="form-body">
 						<div className="border-bottom-box">
-							<h3>Password Reset</h3>
+							<h3>
+								<FormattedMessage id="forgotPassword.passwordReset" defaultMessage="Password Reset"/>
+							</h3>
 							<p>
-								Check your email for a link to reset your password. If you don't receive it within a
-								few minutes, check your spam folder.
+								<FormattedMessage id="forgotPassword.checkEmail" defaultMessage="Check your email for a link to reset your password. If you don't receive it within a
+								few minutes, check your spam folder."/>
 							</p>
 							<div id="controls">
 								<div className="button-group">
 									<Button className="control-button" onClick={onClickGoToLogin}>
-										Return to Sign In
+										<FormattedMessage id="forgotPassword.returnSignIn" defaultMessage="Return to Sign In"/>
 									</Button>
 								</div>
 							</div>
@@ -102,14 +104,18 @@ function Form(props: { email?: string; onComplete: Function }) {
 							/>
 						</div>
 						<div className="button-group">
-							<Button className="control-button">Send Email</Button>
+							<Button className="control-button">
+								<FormattedMessage id="forgotPassword.sendEmail" defaultMessage="Send Email"/>
+							</Button>
 						</div>
 					</div>
 				</div>
 				<div id="controls">
 					<div className="footer">
 						<Link onClick={onClickGoBack}>
-							<p>{"< Back"}</p>
+							<p>
+								<FormattedMessage id="forgotPassword.back" defaultMessage={"< Back"}/>
+							</p>
 						</Link>
 					</div>
 				</div>

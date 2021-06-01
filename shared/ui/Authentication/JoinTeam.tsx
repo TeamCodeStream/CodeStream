@@ -118,10 +118,14 @@ export const JoinTeam = (connect(undefined) as any)((props: DispatchProp) => {
 		<form className="standard-form" style={{ padding: "0 0 0 0" }} onSubmit={onClickJoin}>
 			<fieldset className="form-body" style={{ padding: 0 }}>
 				<div className="border-bottom-box">
-					<h3>Is your team already on CodeStream?</h3>
+					<h3>
+						<FormattedMessage id="joinTeam.alreadyTeam" defaultMessage="Is your team already on CodeStream?"/>
+					</h3>
 					<div id="controls">
 						<div className="control-group">
-							<p>Use your invitation code to connect with your teammates.</p>
+							<p>
+								<FormattedMessage id="joinTeam.invitationCode" defaultMessage="Use your invitation code to connect with your teammates."/>
+							</p>
 							<div className="two-col" style={{ display: "flex" }}>
 								<div style={{ width: "100%", position: "relative" }}>
 									<TextInput

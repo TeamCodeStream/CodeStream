@@ -211,7 +211,9 @@ class Login extends React.Component<Props, State> {
 										onClick={this.handleClickGithubLogin}
 									>
 										<Icon name="mark-github" />
-										<div className="copy">Sign In with GitHub</div>
+										<div className="copy">
+											<FormattedMessage id="login.signGH" defaultMessage="Sign In with GitHub"/>
+										</div>
 										<Icon name="chevron-right" />
 									</Button>
 									<Button
@@ -219,7 +221,9 @@ class Login extends React.Component<Props, State> {
 										onClick={this.handleClickGitlabLogin}
 									>
 										<Icon name="gitlab" />
-										<div className="copy">Sign In with GitLab</div>
+										<div className="copy">
+											<FormattedMessage id="login.signGL" defaultMessage="Sign In with GitLab"/>
+										</div>
 										<Icon name="chevron-right" />
 									</Button>
 									<Button
@@ -227,7 +231,9 @@ class Login extends React.Component<Props, State> {
 										onClick={this.handleClickBitbucketLogin}
 									>
 										<Icon name="bitbucket" />
-										<div className="copy">Sign In with Bitbucket</div>
+										<div className="copy">
+											<FormattedMessage id="login.signBb" defaultMessage="Sign In with Bitbucket"/>
+										</div>
 										<Icon name="chevron-right" />
 									</Button>
 									{this.props.oktaEnabled && (
@@ -236,12 +242,16 @@ class Login extends React.Component<Props, State> {
 											onClick={this.handleClickOktaLogin}
 										>
 											<Icon name="okta" />
-											<div className="copy">Sign In with Okta</div>
+											<div className="copy">
+												<FormattedMessage id="login.signOkta" defaultMessage="Sign In with Okta"/>
+											</div>
 											<Icon name="chevron-right" />
 										</Button>
 									)}
 									<div className="separator-label">
-										<span className="or">or</span>
+										<span className="or">
+											<FormattedMessage id="login.or" defaultMessage="or"/>
+										</span>
 									</div>
 								</div>
 							)}
@@ -298,14 +308,18 @@ class Login extends React.Component<Props, State> {
 									loading={this.state.loading}
 								>
 									<Icon name="codestream" />
-									<div className="copy">Sign In with CodeStream</div>
+									<div className="copy">
+										<FormattedMessage id="login.signCS" defaultMessage="Sign In with CodeStream"/>
+									</div>
 									<Icon name="chevron-right" />
 								</Button>
 							</div>
 						</div>
 						<div className="footer">
 							<p>
-								Don't have an account? <a onClick={this.handleClickSignup}>Sign Up</a>
+								<FormattedMessage id="login.noAccount" defaultMessage="Don't have an account?"/> <a onClick={this.handleClickSignup}>
+									<FormattedMessage id="login.signUp" defaultMessage="Sign Up"/>
+								</a>
 							</p>
 						</div>
 					</fieldset>
