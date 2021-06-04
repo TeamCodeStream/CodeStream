@@ -197,7 +197,7 @@ export const EmailConfirmation = (connect() as any)((props: Props) => {
 						<div className="footer">
 							<div>
 								<p>
-									Already have an account? <Link onClick={onClickGoToLogin}>Sign In</Link>
+									<FormattedMessage id="emailConfirmation.alreadyAccount" defaultMessage="Already have an account?"/> <Link onClick={onClickGoToLogin}><FormattedMessage id="emailConfirmation.signIn" defaultMessage="Sign In"/></Link>
 								</p>
 							</div>
 						</div>

@@ -342,34 +342,44 @@ export const Signup = (props: Props) => {
 								{(!limitAuthentication || authenticationProviders["github*com"]) && (
 									<Button className="row-button no-top-margin" onClick={onClickGithubSignup}>
 										<Icon name="mark-github" />
-										<div className="copy">Sign Up with GitHub</div>
+										<div className="copy">
+											<FormattedMessage id="signUp.GH" defaultMessage="Sign Up with GitHub"/>
+										</div>
 										<Icon name="chevron-right" />
 									</Button>
 								)}
 								{(!limitAuthentication || authenticationProviders["gitlab*com"]) && (
 									<Button className="row-button no-top-margin" onClick={onClickGitlabSignup}>
 										<Icon name="gitlab" />
-										<div className="copy">Sign Up with GitLab</div>
+										<div className="copy">
+											<FormattedMessage id="signUp.GL" defaultMessage="Sign Up with GitLab"/>
+										</div>
 										<Icon name="chevron-right" />
 									</Button>
 								)}
 								{(!limitAuthentication || authenticationProviders["bitbucket*org"]) && (
 									<Button className="row-button no-top-margin" onClick={onClickBitbucketSignup}>
 										<Icon name="bitbucket" />
-										<div className="copy">Sign Up with Bitbucket</div>
+										<div className="copy">
+											<FormattedMessage id="signUp.Bb" defaultMessage="Sign Up with Bitbucket"/>
+										</div>
 										<Icon name="chevron-right" />
 									</Button>
 								)}
 								{derivedState.oktaEnabled && (
 									<Button className="row-button no-top-margin" onClick={onClickOktaSignup}>
 										<Icon name="okta" />
-										<div className="copy">Sign Up with Okta</div>
+										<div className="copy">
+											<FormattedMessage id="signUp.okta" defaultMessage="Sign Up with Okta"/>
+										</div>
 										<Icon name="chevron-right" />
 									</Button>
 								)}
 								{showOr && (
 									<div className="separator-label">
-										<span className="or">or</span>
+										<span className="or">
+											<FormattedMessage id="signUp.or" defaultMessage="or"/>
+										</span>
 									</div>
 								)}
 							</div>
@@ -381,10 +391,12 @@ export const Signup = (props: Props) => {
 				<fieldset className="form-body" style={{ paddingTop: 0, paddingBottom: 0 }}>
 					{(!limitAuthentication || authenticationProviders["email"]) && (
 						<div className="border-bottom-box">
-							<h3>Create an Account</h3>
+							<h3>
+								<FormattedMessage id="signUp.createAccount" defaultMessage="Create an Account"/>
+							</h3>
 							{wasInvited && (
 								<p className="explainer">
-									Create an account to join the <strong>{props.teamName}</strong> team.
+									<FormattedMessage id="signUp.joinTeam" defaultMessage={`Create an account to join the <strong>${props.teamName}</strong> team.`}/>
 								</p>
 							)}
 							{!wasInvited && <div className="small-spacer" />}
@@ -403,7 +415,7 @@ export const Signup = (props: Props) => {
 								)}
 								{inviteConflict && (
 									<div className="error-message form-error">
-										Invitation conflict.{" "}
+										<FormattedMessage id="signUp.conflict" defaultMessage="Invitation conflict."/>{" "}
 										<FormattedMessage id="contactSupport" defaultMessage="Contact support">
 											{text => <Link href="mailto:support@codestream.com">{text}</Link>}
 										</FormattedMessage>
@@ -411,7 +423,9 @@ export const Signup = (props: Props) => {
 									</div>
 								)}
 								<div className="control-group">
-									<label>Work Email</label>
+									<label>
+										<FormattedMessage id="signUp.workEmail" defaultMessage="Work Email"/>
+									</label>
 									<TextInput
 										name="email"
 										value={email}
@@ -470,7 +484,7 @@ export const Signup = (props: Props) => {
 										validate={isNotEmpty}
 										onValidityChanged={onValidityChanged}
 									/>
-									{!fullNameValidity && <small className="explainer error-message">Required</small>}
+									{!fullNameValidity && <small className="explainer error-message"><FormattedMessage id="signUp.required" defaultMessage="Required"/></small>}
 								</div>
 								{false && !wasInvited && (
 									<div className="control-group">
@@ -486,7 +500,7 @@ export const Signup = (props: Props) => {
 											onValidityChanged={onValidityChanged}
 										/>
 										{!companyNameValidity && (
-											<small className="explainer error-message">Required</small>
+											<small className="explainer error-message"><FormattedMessage id="signUp.required" defaultMessage="Required"/></small>
 										)}
 									</div>
 								)}

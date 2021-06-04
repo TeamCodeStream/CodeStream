@@ -70,8 +70,12 @@ export const OktaConfig = (connect() as any)((props: ConnectedProps & DispatchPr
 			<form className="standard-form" onSubmit={onSubmit}>
 				<fieldset className="form-body">
 					<div className="border-bottom-box">
-						<h3>Host URL</h3>
-						<p>Enter the URL you use to access your Okta account.</p>
+						<h3>
+							<FormattedMessage id="oktaConfig.hostURL" defaultMessage="Host URL"/>
+						</h3>
+						<p>
+							<FormattedMessage id="oktaConfig.enterURL" defaultMessage="Enter the URL you use to access your Okta account."/>
+						</p>
 						<div id="controls">
 							<div className="control-group">
 								<div style={{ height: "20px" }} />
@@ -84,7 +88,7 @@ export const OktaConfig = (connect() as any)((props: ConnectedProps & DispatchPr
 									onValidityChanged={onValidityChanged}
 									required
 								/>
-								{!hostUrlValidity && <small className="explainer error-message">Required</small>}
+								{!hostUrlValidity && <small className="explainer error-message"><FormattedMessage id="oktaConfig.required" defaultMessage="Required"/></small>}
 							</div>
 							<div className="button-group">
 								<Button className="control-button" type="submit" loading={isLoading}>
@@ -95,7 +99,9 @@ export const OktaConfig = (connect() as any)((props: ConnectedProps & DispatchPr
 					</div>
 					<div id="controls">
 						<div className="footer">
-							<Link onClick={onCancel}>Cancel</Link>
+							<Link onClick={onCancel}>
+								<FormattedMessage id="oktaConfig.cancel" defaultMessage="Cancel"/>
+							</Link>
 						</div>
 					</div>
 				</fieldset>

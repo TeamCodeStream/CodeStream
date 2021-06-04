@@ -1,6 +1,7 @@
 import React, { useState, useCallback } from "react";
 import { Link } from "../Stream/Link";
 import { connect } from "react-redux";
+import { FormattedMessage } from "react-intl";
 import { goToSignup, SupportedSSOProvider, goToLogin } from "../store/context/actions";
 import { useInterval, useRetryingCallback, useTimeout } from "../utilities/hooks";
 import { DispatchProp } from "../store/common";
@@ -109,7 +110,7 @@ export const ProviderAuth = (connect(undefined) as any)((props: Props) => {
 		? "an"
 		: "a";
 	// HACK: this sucks ... we really should have access to the actual error info here
-	// instead of doing string matching
+	// instead of doing string matching. Facts
 	const ideAuthFailure =
 		props.gotError &&
 		typeof props.gotError === "string" &&
@@ -121,36 +122,38 @@ export const ProviderAuth = (connect(undefined) as any)((props: Props) => {
 			<form className="standard-form">
 				<fieldset className="form-body">
 					<div className="border-bottom-box">
-						<h2>{providerCapitalized} Authentication</h2>
+						<h2>
+							<FormattedMessage id="providerAuth.auth" defaultMessage={`${providerCapitalized} Authentication`}/>
+						</h2>
 						<p>
-							Your web browser should have opened up to {aOrAn} {providerCapitalized} authentication
-							page. Once you've completed the authentication process, return here to get started
-							with CodeStream.
+							<FormattedMessage id="providerAuth.message" defaultMessage={`Your web browser should have opened up to ${aOrAn} ${providerCapitalized} authentication page. Once you've completed the authentication process, return here to get started with CodeStream.`}/>
 						</p>
 						<br />
 						<div>
 							{isWaiting && !props.gotError ? (
 								<strong>
-									Waiting for {providerCapitalized} authentication <LoadingEllipsis />
+									<FormattedMessage id="providerAuth.waiting" defaultMessage={`Waiting for ${providerCapitalized} authentication`}/> <LoadingEllipsis />
 								</strong>
 							) : { ideAuthFailure } ? (
 								<strong>
-									Account not found. Please <Link onClick={onClickGoToSignup}>sign up</Link>.
+									<FormattedMessage id="providerAuth.accountNoFound" defaultMessage="Account not found. Please "/><Link onClick={onClickGoToSignup}><FormattedMessage id="providerAuth.signUp" defaultMessage="sign up"/></Link>.
 								</strong>
 							) : (
 								<strong>
-									{props.gotError ? "Login failed" : "Login timed out"}. Please{" "}
-									<Link onClick={onClickTryAgain}>try again</Link>.
+									{props.gotError ? <FormattedMessage id="providerAuth.failed" defaultMessage="Login failed"/> : <FormattedMessage id="providerAuth.timeOut" defaultMessage="Login timed out"/>}. <FormattedMessage id="providerAuth.please" defaultMessage="Please"/>{" "}
+									<Link onClick={onClickTryAgain}><FormattedMessage id="providerAuth.tryAgain" defaultMessage="try again"/></Link>.
 								</strong>
 							)}
 						</div>
 					</div>
 					<p>
-						Something went wrong? <Link href="mailto:support@codestream.com">Contact support</Link>{" "}
-						or <Link onClick={onClickTryAgain}>Try again</Link>
+						<FormattedMessage id="providerAuth.wrong" defaultMessage="Something went wrong? "/><Link href="mailto:support@codestream.com"><FormattedMessage id="providerAuth.contact" defaultMessage="Contact support"/></Link>{" "}
+						<FormattedMessage id="providerAuth.or" defaultMessage="or "/><Link onClick={onClickTryAgain}><FormattedMessage id="providerAuth.tryAgain" defaultMessage="Try again"/></Link>
 					</p>
 					<Link onClick={onClickGoBack}>
-						<p>{"< Back"}</p>
+						<p>
+							<FormattedMessage id="providerAuth.back" defaultMessage={"< Back"}/>
+						</p>
 					</Link>
 				</fieldset>
 			</form>

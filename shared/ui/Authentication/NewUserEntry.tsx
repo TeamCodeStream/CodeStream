@@ -2,6 +2,7 @@ import React from "react";
 import Button from "../Stream/Button";
 import Icon from "../Stream/Icon";
 import { connect } from "react-redux";
+import { FormattedMessage } from "react-intl";
 import { CodeStreamState } from "../store";
 import { goToLogin, goToJoinTeam, goToSignup } from "../store/context/actions";
 import { DispatchProp } from "../store/common";
@@ -142,12 +143,13 @@ export const NewUserEntry = (connect(mapStateToProps) as any)((props: Props) => 
 													<b>{admin.fullName}</b>
 												))}
 											/>{" "}
-											set up a team for people working on the{" "}
+											<FormattedMessage id="newUserEntry.setUpTeam" defaultMessage="set up a team for people working on the"/>{" "}
 											<SmartFormattedList
 												value={repoNamesByTeam[match.team.id].map(name => (
 													<b>{name}</b>
 												))}
 											/>{" "}
+											{/* In trying to translate this part, I run into a conflict regarding Spanish grammar. What I can understand is that at the beginning of the message it shows the team administrator and this is concatenated with the message "set up a team for people working on the", then it should say the name or names of the repository or (if there are more) of the repositories. I would try to change the logic of the last part regarding the repositories but I don't have access to the user interface to check the grammar. */}
 											{repoNamesByTeam[match.team.id].length > 1 ? "repositories" : "repository"}.
 										</div>
 									</JoinTitle>
@@ -156,11 +158,11 @@ export const NewUserEntry = (connect(mapStateToProps) as any)((props: Props) => 
 										onClick={e => onClickAutoJoinTeam(e, match.team.id)}
 									>
 										<Icon name="plus" />
-										<div className="copy">Join {match.team.name}</div>
+										<div className="copy"><FormattedMessage id="newUserEntry.join" defaultMessage="Join"/> {match.team.name}</div>
 									</Button>
 									<div style={{ textAlign: "right", margin: "10px 0 0 10px", fontSize: "smaller" }}>
 										<Link onClick={() => setShowAdvanced(!showAdvanced)}>
-											Sign In &amp; Advanced Options
+											<FormattedMessage id="newUserEntry.advancedOptions" defaultMessage="Sign In &amp; Advanced Options"/>
 										</Link>
 									</div>
 								</div>
@@ -170,42 +172,51 @@ export const NewUserEntry = (connect(mapStateToProps) as any)((props: Props) => 
 					{(autoJoinInfo.length === 0 || showAdvanced) && (
 						<>
 							<div className="border-bottom-box">
-								<h3>Try CodeStream with your team, for free</h3>
-								<p>Create a brand-new team for you and your teammates.</p>
+								<h3>
+									<FormattedMessage id="newUserEntry.freeCS" defaultMessage="Try CodeStream with your team, for free"/>
+								</h3>
+								<p>
+									<FormattedMessage id="newUserEntry.brandNew" defaultMessage="Create a brand-new team for you and your teammates."/>
+								</p>
 								<Button className="row-button no-top-margin" onClick={onClickCreateTeam}>
 									<Icon name="plus" />
-									<div className="copy">Sign Up and Create a Team</div>
+									<div className="copy">
+										<FormattedMessage id="newUserEntry.signUp" defaultMessage="Sign Up and Create a Team"/>
+									</div>
 								</Button>
 							</div>
 							<JoinTeam />
 							<div className="border-bottom-box">
-								<h3>Already have an account?</h3>
+								<h3>
+									<FormattedMessage id="newUserEntry.alreadyAccount" defaultMessage="Already have an account?"/>
+								</h3>
 								<Button className="row-button no-top-margin" onClick={onClickLogin}>
 									<Icon name="sign-in" />
-									<div className="copy">Sign In</div>
+									<div className="copy">
+										<FormattedMessage id="newUserEntry.signIn" defaultMessage="Sign In"/>
+									</div>
 								</Button>
 							</div>
 							<div className="border-bottom-box">
 								<h3>
-									<Icon name="light-bulb" /> &nbsp;What’s a CodeStream team?
+									<Icon name="light-bulb" /> <FormattedMessage id="newUserEntry.whatIs" defaultMessage="&nbsp;What’s a CodeStream team?"/>
 								</h3>
 								<p>
-									Each organization that uses CodeStream has teams of their own. Teams are where all
-									of their code discussions are kept, and they can only be joined by invitation.
+									<FormattedMessage id="newUserEntry.description" defaultMessage="Each organization that uses CodeStream has teams of their own. Teams are where all of their code discussions are kept, and they can only be joined by invitation."/>
 								</p>
 							</div>
 							<div id="controls">
 								<div className="footer">
 									<div>
 										<p style={{ opacity: 0.5, fontSize: ".9em", textAlign: "center" }}>
-											CodeStream Version {props.pluginVersion}
+											<FormattedMessage id="newUserEntry.version" defaultMessage="CodeStream Version"/> {props.pluginVersion}
 											<br />
-											Connected to {props.whichServer}.
+											<FormattedMessage id="newUserEntry.connected" defaultMessage="Connected to"/> {props.whichServer}.
 										</p>
 										<p style={{ opacity: 1, fontSize: ".9em", textAlign: "center" }}>
 											{!props.isOnPrem && (
 												<a href="https://docs.codestream.com/userguide/faq/on-prem/">
-													Looking for on-prem?
+													<FormattedMessage id="newUserEntry.onPrem" defaultMessage="Looking for on-prem?"/>
 												</a>
 											)}
 										</p>

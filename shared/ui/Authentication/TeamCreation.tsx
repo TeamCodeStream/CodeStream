@@ -59,9 +59,13 @@ export const TeamCreation = (connect() as any)((props: ConnectedProps & Dispatch
 			<form className="standard-form" onSubmit={onSubmit}>
 				<fieldset className="form-body">
 					<div className="border-bottom-box">
-						<h3>Team Name</h3>
+						<h3>
+							<FormattedMessage id="teamCreation.teamName" defaultMessage="Team Name"/>
+						</h3>
 						{props.loggedIn && (
-							<h4>You don't belong to a team yet. Enter a name to create one now.</h4>
+							<h4>
+								<FormattedMessage id="teamCreation.teamYet" defaultMessage="You don't belong to a team yet. Enter a name to create one now."/>
+							</h4>
 						)}
 						<div id="controls">
 							<div className="control-group">
@@ -75,7 +79,7 @@ export const TeamCreation = (connect() as any)((props: ConnectedProps & Dispatch
 									onValidityChanged={onValidityChanged}
 									required
 								/>
-								{!teamNameValidity && <small className="explainer error-message">Required</small>}
+								{!teamNameValidity && <small className="explainer error-message"><FormattedMessage id="teamCreation.required" defaultMessage="Required"/></small>}
 							</div>
 							<div className="button-group">
 								<Button className="control-button" type="submit" loading={isLoading}>
@@ -86,7 +90,7 @@ export const TeamCreation = (connect() as any)((props: ConnectedProps & Dispatch
 					</div>
 					<div id="controls">
 						<div className="footer">
-							<Link onClick={onCancel}>Cancel</Link>
+							<Link onClick={onCancel}><FormattedMessage id="teamCreation.cancel" defaultMessage="Cancel"/></Link>
 						</div>
 					</div>
 				</fieldset>
